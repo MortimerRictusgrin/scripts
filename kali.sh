@@ -5,8 +5,11 @@ sudo apt update
 sudo apt upgrade -y
 sudo apt install -y kali-desktop-xfce kali-tools-top10 tigervnc-standalone-server novnc
 
-# Configurar contraseña para servidor vnc
+# Configurar contraseÃ±a para servidor vnc
 vncpasswd
+
+# Crear directorio
+mkdir -p $HOME/.local/bin/
 
 # Iniciar servidor VNC, inicia en puerto 5901 e iniciar el servicio NoVNC
 # para acceder desde el navegador
