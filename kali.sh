@@ -11,9 +11,15 @@ vncpasswd
 # Crear directorio
 mkdir -p $HOME/.local/bin/
 
+# Agregar directorio al PATH
+echo "export $HOME/.local/bin" >> ~/.zshrc
+
 # Iniciar servidor VNC, inicia en puerto 5901 e iniciar el servicio NoVNC
 # para acceder desde el navegador
 cat <<EOF >>$HOME/.local/bin/remote.sh
+vncserver -kill :1 &
+kill -9 $(lsof -t -i tcp:8081) &
+sleep 3
 vncserver -localhost yes -xstartup startxfce4 -display :1 &
 /usr/share/novnc/utils/novnc_proxy --listen 8081 --vnc localhost:5901 &
 sleep 3
